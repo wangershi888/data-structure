@@ -90,7 +90,7 @@ class LinkedList {
     return head;
   }
   isEmpty() {
-    return lengt === 0;
+    return length === 0;
   }
   size() {
     return length;
