@@ -89,6 +89,12 @@ class LinkedList {
   getHead() {
     return head;
   }
+  isEmpty() {
+    return lengt === 0;
+  }
+  size() {
+    return length;
+  }
 }
 
 let l = new LinkedList();
