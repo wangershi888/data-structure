@@ -22,8 +22,15 @@ class HashTable {
     }
     return hash % 37;
   }
-  // 散列函数2.o
-  djb2HashCode(key) {}
+  // 散列函数2.0
+  djb2HashCode(key) {
+    // 用它来解决冲突问题
+    var hash = 5381;
+    for (var i = 0; i < key.length; i++) {
+      hash = hash * 33 + key[i].charCodeAt();
+    }
+    return hash % 1013;
+  }
   put(key, value) {
     var position = this.loseloseHashCode(key);
     if (!this.item[position]) {
@@ -79,3 +86,63 @@ console.log(a.getItems("Ana"));
 
 console.log(a.remove("Ana"));
 console.log(a.getItems("Ana"));
+
+// 线性探查法
+
+class HashTableLine {
+  table = [];
+  // 散列函数
+  loseloseHashCode(key) {
+    // key => number => item[number]
+    // 通过Ascii码转换的一种形式
+    var hash = 0; // 散列值
+    for (var i = 0; i < key.length; i++) {
+      // 将key的每一项，转换成ascii码
+      hash += key[i].charCodeAt();
+    }
+    return hash % 37;
+  }
+  put(key, value) {
+    // 如果被占用，则向下移位，直到undefined，则存进去
+    var position = this.loseloseHashCode(key);
+    if (this.table[position] === undefined) {
+      // 直接存储
+      this.table[position] = new Node(key, value);
+    } else {
+      // 当前位置被占据，则不断的查找，直到遇到空的为止
+      position += 1;
+      while (this.table[position] !== undefined) {
+        position += 1;
+      }
+      this.table[position] = new Node(key, value);
+    }
+  }
+  get(key) {
+    var position = this.loseloseHashCode(key);
+    if (this.table[position].key === undefined) return undefined;
+    if (this.table[position].key === key) {
+      return this.table[position].value;
+    } else {
+      position += 1;
+      while (this.table[position].key === key) {
+        position += 1;
+      }
+      return this.table[position].value;
+    }
+  }
+  remove(key) {
+    var position = this.loseloseHashCode(key);
+    if (this.table[position].key === undefined) return undefined;
+    if (this.table[position].key === key) {
+      this.table[position] = undefined;
+      return true;
+    } else {
+      position += 1;
+      while (this.table[position].key === key) {
+        position += 1;
+      }
+      this.table[position] = undefined;
+      return true;
+    }
+  }
+}
