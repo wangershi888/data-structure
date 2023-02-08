@@ -39,6 +39,7 @@ class LinkedList {
     }
   }
   append(element) {
+    console.log("element", element);
     var node = new Node(element);
     if (head == null) {
       head = node;
@@ -97,11 +98,14 @@ class LinkedList {
   }
 }
 
-let l = new LinkedList();
-l.append(1);
-l.append(2);
-l.append(3);
-l.remove(2);
+// let l = new LinkedList();
+// l.append(1);
+// l.append(2);
+// l.append(3);
+// l.remove(2);
 // l.insert(123121, 1);
-console.log(l.getHead());
 // console.log(l.getHead());
+// console.log(l.getHead());
+module.exports = {
+  LinkedList,
+};
