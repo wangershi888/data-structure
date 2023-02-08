@@ -57,4 +57,29 @@
 
 ## 集合
 
+    1、集合中不能有重复元素
+    2、空集：没有任何元素的集合叫空集
+    3、子集：A中所有的元素再B中都有，则可以称 A 是 B 的子集
+
+    Set :
+    方法：
+    + add： 添加元素
+    + clear: 清空集合
+    + delete: 删除元素
+    + entire: 迭代器
+    + forEach: 遍历方法
+    + has: 检查元素是否存在
+    + size: 获取集合大小
+    + values: 获取全部值
+
+    weakSet:
+
+    + add: 添加元素
+    + delete: 删除元素
+    + has: 检查元素
+
+    Set 和 weakSet的区别：
+    1、weakSet方法较少、set方法丰富
+    2、weakSet只能添加Object类型的数值
+
 ## 字典
