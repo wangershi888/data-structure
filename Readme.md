@@ -81,5 +81,17 @@
     Set 和 weakSet的区别：
     1、weakSet方法较少、set方法丰富
     2、weakSet只能添加Object类型的数值
+    3、Set是强引用、weakSet为弱引用（JS内存回收机制）
+        ```
+        let obj = {a: 'a'}
+        obj = null
+        // 之前的 {a: 'a'}失去引用后，会被CG内存回收掉
+
+        强引用：
+        let obj = {a: 'a'}
+        let a = new Set(obj)
+        obj = null
+        // 此时 {a: 'a'} 的值仍然会存在（强引用）如果使用weakSet的话会被清理掉
+        ```
 
 ## 字典
