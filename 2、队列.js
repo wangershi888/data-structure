@@ -47,3 +47,7 @@ class QueueItem {
 }
 
 var Q = new Queue();
+
+module.exports = {
+  Queue
+}

@@ -23,3 +23,7 @@ class Stack {
     items = [];
   }
 }
+
+module.exports = {
+  Stack,
+};
